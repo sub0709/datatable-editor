@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.js"></script>
+
+<script type="text/javascript" src="js/datatable-editor.js"></script>
+
+<style>
+body > div {width:50%; display:inline-block; float:left;}
+</style>
+</head>
+<body>
+<div >
+	<table id="userTable">
+		<thead>
+			<tr>
+				<th>가수</th>
+				<th>노래</th>
+				<th>날짜</th>
+				<th>카운트</th>
+			</tr>
+		</thead>
+		<tbody>
+
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Commit</th>
+				<th>Date</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Ronald Bradley</td>
+				<td>Initial commit</td>
+				<td class="text-nowrap">May 6, 2018</td>
+				<td class="w-1"><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+			</tr>
+			<tr>
+				<td>Russell Gibson</td>
+				<td>Main structure</td>
+				<td class="text-nowrap">April 22, 2018</td>
+				<td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+			</tr>
+			<tr>
+				<td>Beverly Armstrong</td>
+				<td>Left sidebar adjustments</td>
+				<td class="text-nowrap">April 15, 2018</td>
+				<td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+			</tr>
+			<tr>
+				<td>Bobby Knight</td>
+				<td>Topbar dropdown style</td>
+				<td class="text-nowrap">April 8, 2018</td>
+				<td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+			</tr>
+			<tr>
+				<td>Sharon Wells</td>
+				<td>Fixes #625</td>
+				<td class="text-nowrap">April 9, 2018</td>
+				<td><a href="#" class="icon"><i class="fe fe-trash"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>idx</th>
+				<th>브라우저</th>
+				<th>점유율</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td width="1">1</td>
+				<td>Google Chrome</td>
+				<td class="text-right"><span class="text-muted">23%</span></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Mozila Firefox</td>
+				<td class="text-right"><span class="text-muted">15%</span></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Apple Safari</td>
+				<td class="text-right"><span class="text-muted">7%</span></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Internet Explorer</td>
+				<td class="text-right"><span class="text-muted">9%</span></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Opera mini</td>
+				<td class="text-right"><span class="text-muted">23%</span></td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>Microsoft edge</td>
+				<td class="text-right"><span class="text-muted">9%</span></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>진척율</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Admin Template</td>
+				<td class="text-right">
+					<span class="badge badge-default"></span>65%</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Landing Page</td>
+				<td class="text-right">
+					<span class="badge badge-success">Finished</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Backend UI</td>
+				<td class="text-right">
+					<span class="badge badge-danger">Rejected</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Personal Blog</td>
+				<td class="text-right">
+					<span class="badge badge-default">40%</span>
+				</td>
+			</tr>
+			<tr>
+				<td>E-mail Templates</td>
+				<td class="text-right">
+					<span class="badge badge-default">13%</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Corporate Website</td>
+				<td class="text-right">
+					<span class="badge badge-warning">Pending</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<script>
+	String.prototype.toComma = function() {
+		var reg = /(^[+-]?\d+)(\d{3})/;
+		var num = this;
+		while(reg.test(num))
+			num = num.replace(reg, '$1' + ',' + '$2');
+		return num;
+	};
+	Number.prototype.toComma = function() {
+		var reg = /(^[+-]?\d+)(\d{3})/;
+		var num = this + '';
+		while(reg.test(num))
+			num = num.replace(reg, '$1' + ',' + '$2');
+		return num;
+	};
+	
+
+	var table1 = $('#userTable').DataTable({
+		dom : 'Bfrtip',
+		data : [{"aaa":"아이유","bbb":"분홍신","ccc":1584341626075,"ddd":10},{"aaa":"반하나","bbb":"우리","ccc":1584341616075,"ddd":10},{"aaa":"이예준","bbb":"미친소리","ccc":1584341626375,"ddd":10},{"aaa":"박혜원","bbb":"봄의발라드","ccc":1584341526075,"ddd":10}],
+		paging : false,
+		ordering : false,
+		searching : false,
+		columns : [
+			{data : 'aaa'},
+			{data : 'bbb'},
+			{data : 'ccc'},
+			{data : 'ddd'}
+		],
+		columnDefs : [
+			{
+				render : function(data, type, row) {
+					return data.toComma();
+				},
+				targets : 3
+			},
+			{
+				render : function(data, type, row) {
+					if(typeof data == 'number')	 {
+						return new Date(data).toLocaleString();
+					}
+					return data || '';
+				},
+				targets : 2
+			}
+		]
+	});
+
+	datatableEdit({
+		dataTable : table1,
+		eventTarget : 'tbody td',
+		columnDefs : [
+			{
+				targets : 0
+			},
+
+			{
+				targets : 2
+			},
+			{
+				onEdited : function(prev, changed, index, cell) {
+					console.log('4444444444');
+					console.log(prev, changed, index, cell);
+				},
+				targets : 3
+			},
+		]
+	});
+
+
+	var tables = $('.table').DataTable();
+	datatableEdit({
+		dataTable : tables,
+		columnDefs : [
+			{
+				onEdited : function(prev, changed, index, cell) {
+					console.log('aaaaaaa');
+					console.log(prev, changed, index, cell);
+				},
+				targets : 0
+			}
+		],
+		onEdited : function(prev, changed, index, cell) {
+			console.log('bbbbb');
+			console.log(prev, changed, index, cell.row().data());
+		}
+	});
+</script>
+</body>
+</html>
