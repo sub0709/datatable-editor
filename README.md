@@ -74,7 +74,7 @@ datatableEdit({
   ],
   onEdited : function(prev, changed, index, cell) {
     console.log('every cell');
-    console.log(prev, changed, index, cell.row().data());
+    console.log(prev, changed, index, cell.row(index.row).data());
   }
 
 });
